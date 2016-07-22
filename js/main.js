@@ -85,7 +85,8 @@ socket.on('ready', function() {
 });
 
 socket.on('message', function(message) {
-  console.log('Client received message with type', message.type);
+  //console.log('Client received message with type', message.type);
+  console.log('Client received message ', message);
   //signalingMessageCallback(message);
   p.signal(message);
 });
@@ -98,7 +99,8 @@ socket.on('log', function(array) {
 * Send message to signaling server
 */
 function sendMessage(message) {
-  console.log('Client sending message with type ', message.type);
+  //console.log('Client sending message with type ', message.type);
+  console.log('Client sending message ', message);
   socket.emit('message', message);
 }
 
@@ -197,7 +199,8 @@ function createPeerConnection(isInitiator, config) {
 
   p.on('signal', function (data) {
     sendMessage(data);
-    console.log('SIGNAL', JSON.stringify(data))
+    //console.log('SIGNAL', JSON.stringify(data))
+    console.log('SIGNAL', data)
   })
 
 	if (isInitiator) {
